@@ -23,7 +23,23 @@ class ActivityController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// CREATE TABLE `users` (
+//   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+//   `email` varchar(255) DEFAULT NULL,
+//   `first_name` varchar(255) DEFAULT NULL,
+//   `last_name` varchar(255) DEFAULT NULL,
+//   `password` varchar(255) DEFAULT NULL,
+//   `detail` varchar(1000) DEFAULT NULL,
+//   `rating` int(11) DEFAULT NULL,
+//   PRIMARY KEY (`id`)
+// ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+		$user = new User;
+		$user->email = Input::get["email"];
+		$user->firstName = Input::get["first_name"];
+		$user->lastName = Input::get["last_name"];
+		$user->password = Input::get["password"];
+		$user->detail = Input::get["detial"];
+		$user->save();
 	}
 
 

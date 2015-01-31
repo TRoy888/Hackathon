@@ -31,7 +31,12 @@ class SessionController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$email = Input::get("email");
+		$password = Input::get("password");
+		if (Auth::attempt(array('email' => $email, 'password' => $password)))
+		{
+			return Redirect::intended('dashboard');
+		}
 	}
 
 
