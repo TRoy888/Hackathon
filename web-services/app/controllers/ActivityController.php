@@ -11,8 +11,11 @@ class ActivityController extends \BaseController {
 	{
 		//34.022983, -118.295556
 		//34.022912, -118.295470
+		$lon = Input::get('lon');
+		$lat = Input::get('lat');
 		$a = new Activity;
-		return json_encode($a->findActityByLocation(34.022912, -118.295470));
+		// return json_encode($a->findActityByLocation(34.022912, -118.295470));
+		return json_encode($a->findActityByLocation($lat, $lon));
 	}
 
 
@@ -55,7 +58,7 @@ class ActivityController extends \BaseController {
 		$locationLat = Input::get('locationLat');
 		$description = Input::get('description');
 		$categoryId = Input::get('categoryId');
-		
+
 		$activity = new Activity;
 		$activity->name = $name;
 		$activity->locationLong = $locationLong;
@@ -112,25 +115,25 @@ class ActivityController extends \BaseController {
 	{
 		//
 	}
-	
+
 	public function getFriendsActivities($userId)
 	{
-		
+
 	}
-	
+
 	public function joinActivity($activityId, $userId)
 	{
-		
+
 	}
-	
+
 	public function getEnrolledActivities($userId)
 	{
-		
+
 	}
-	
+
 	public function getCreatedActivities($userId)
 	{
-		
+
 	}
 
 

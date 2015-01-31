@@ -18,9 +18,18 @@ class Activity extends Eloquent{
     return DB::table('activities')->whereBetween('location_long', array($locationLong-$lonDif, $locationLat-$latDif))->get();
   }
   public function findAcivityByFriend($user){
-
+    $friends = User::find($user->id)->friends;
+    $activities = array();
+    foreach ($friends as &$friend) {
+      foreach ($friend->joinedActivities as &$activity){
+        if(!array_key_exists ( $activity->id , $activities))
+          $activities[$activity->id] = $activity;
+      }
+    }
+    return $activities;
+    // return User::find($user->id)->friends[1]->joinedActivities;
   }
   public function findUserActivity($user){
-
+    return User::find($user->id)->joinedActivities;
   }
 }

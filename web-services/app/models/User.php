@@ -23,7 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token', 'pivot');
 
-	public function users(){
+	public function friends(){
 		return $this->belongsToMany('User', 'user_user', 'user_id_1', 'user_id_2');
 	}
 
@@ -32,8 +32,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function createdActivities(){
-		
+		return $this->hasMany('Activity');
 	}
-
-
 }
