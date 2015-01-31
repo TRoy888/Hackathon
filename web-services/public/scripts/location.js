@@ -10,4 +10,5 @@ function showPosition(position) {
       'lon':position.coords.longitude
       , 'lat':position.coords.latitude
   };
+  return p;
 }
