@@ -12,10 +12,13 @@ class UserController extends \BaseController {
 		//return User::find(1)->users;
 		// return User::find(1)->joinedActivities;
 		//return User::find(1)->createdActivities;
-		$u = new User;
-		$u->id = 1;
-		$a = new Activity;
-		return $a->findAcivityByFriend($u);
+		// $u = new User;
+		// $u->id = 1;
+		// $a = new Activity;
+		// return $a->findAcivityByFriend($u);
+		// return Category::find(1)->activities;
+		// return Activity::find(1)->category;
+		// return Activity::find(1)->joiners;
 	}
 
 

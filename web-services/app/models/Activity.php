@@ -32,4 +32,11 @@ class Activity extends Eloquent{
   public function findUserActivity($user){
     return User::find($user->id)->joinedActivities;
   }
+
+  public function category(){
+    return $this->belongsTo('Category');
+  }
+  public function joiners(){
+    return $this->belongsToMany('User', 'activity_user', 'activity_id', 'user_id');
+  }
 }
