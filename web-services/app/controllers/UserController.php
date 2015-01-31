@@ -29,7 +29,7 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 
@@ -40,7 +40,17 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$user = new User;
+		$user->email = Input::get("email");
+		$user->first_name = Input::get("first_name");
+		$user->last_name = Input::get("last_name");
+		$user->first_name = Input::get("first_name");
+		$user->last_name = Input::get("last_name");
+		$user->password = Hash::make(Input::get("password"));
+		$user->detail = Input::get("detial");
+		$user->rating = 1;
+		$user->picture = Input::get("picture");
+		$user->save();
 	}
 
 

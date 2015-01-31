@@ -35,8 +35,10 @@ class SessionController extends \BaseController {
 		$password = Input::get("password");
 		if (Auth::attempt(array('email' => $email, 'password' => $password)))
 		{
+//			return "Welcome". Auth::user()->username;
 			return Redirect::intended('dashboard');
 		}
+		return Redirect::back()->withInput();
 	}
 
 

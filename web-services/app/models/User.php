@@ -16,6 +16,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+	protected $fillable = ['email', 'frist_name', 'last_name', 'password', 'detail', 'rating', 'remember_token', 'picture'];
+
+	public static $rules = [
+		'email'				=> 'required',
+		'first_name'	=> 'required',
+		'last_name'		=> 'required',
+		'password'		=> 'required'
+	];
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -33,5 +42,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function createdActivities(){
 		return $this->hasMany('Activity');
+	}
+
+	public function isValid()
+	{
+		$validation = Validator::make($this->attributes, static::$rules);
+
+		if ($validation->passes()) return true;
+
+		$this->errors = $validation->message();
+		return false;
 	}
 }
