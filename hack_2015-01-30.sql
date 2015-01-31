@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38)
 # Database: hack
-# Generation Time: 2015-01-31 06:45:09 +0000
+# Generation Time: 2015-01-31 07:45:50 +0000
 # ************************************************************
 
 
@@ -59,6 +59,17 @@ CREATE TABLE `activity_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `activity_user` WRITE;
+/*!40000 ALTER TABLE `activity_user` DISABLE KEYS */;
+
+INSERT INTO `activity_user` (`id`, `user_id`, `activity_id`)
+VALUES
+	(1,1,1),
+	(2,3,1),
+	(3,4,1);
+
+/*!40000 ALTER TABLE `activity_user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table categories
@@ -96,6 +107,18 @@ CREATE TABLE `user_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `user_user` WRITE;
+/*!40000 ALTER TABLE `user_user` DISABLE KEYS */;
+
+INSERT INTO `user_user` (`id`, `user_id_1`, `user_id_2`)
+VALUES
+	(1,1,3),
+	(2,1,4),
+	(3,3,4),
+	(4,4,3);
+
+/*!40000 ALTER TABLE `user_user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table users
@@ -111,15 +134,18 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `detail` varchar(1000) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `detail`, `rating`)
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `detail`, `rating`, `remember_token`)
 VALUES
-	(1,'trojan@usc.edu','Tommy','Trojan','password','testign',1);
+	(1,'trojan@usc.edu','Tommy','Trojan','password','testign',1,NULL),
+	(3,'pakdiyin@usc.edu','Golf','Golf_L','password','Hello World',1,NULL),
+	(4,'bumroong','Benz','Benz_L','password','Testsetesktklasjfklasjdlkfjklsdjf',1,NULL);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
