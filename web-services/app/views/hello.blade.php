@@ -1,3 +1,4 @@
+@extends('layouts.default');
 <!doctype html>
 <html lang="en">
 <head>

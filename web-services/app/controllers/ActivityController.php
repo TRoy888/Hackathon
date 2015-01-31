@@ -9,6 +9,7 @@ class ActivityController extends \BaseController {
 	 */
 	public function index()
 	{
+		return View::make('activities.index');
 		//34.022983, -118.295556
 		//34.022912, -118.295470
 		$lon = Input::get('lon');
