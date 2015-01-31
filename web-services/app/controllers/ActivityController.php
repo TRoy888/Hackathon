@@ -34,7 +34,19 @@ class ActivityController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$name = Input::get('name');
+		$locationLong = Input::get('locationLong');
+		$locationLat = Input::get('locationLat');
+		$description = Input::get('description');
+		$categoryId = Input::get('categoryId');
+		
+		$activity = new Activity;
+		$activity->name = $name;
+		$activity->locationLong = $locationLong;
+		$activity->locationLat = $locationLat;
+		$activity->description = $description;
+		$activity->categoryId = $categoryId;
+		$activity->save();
 	}
 
 
@@ -83,6 +95,26 @@ class ActivityController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+	
+	public function getFriendsActivities($userId)
+	{
+		
+	}
+	
+	public function joinActivity($activityId, $userId)
+	{
+		
+	}
+	
+	public function getEnrolledActivities($userId)
+	{
+		
+	}
+	
+	public function getCreatedActivities($userId)
+	{
+		
 	}
 
 

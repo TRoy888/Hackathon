@@ -24,3 +24,7 @@ Route::get('/logout', 'SessionController@destroy');
 Route::resource('/session','SessionController');
 
 Route::resource('/activity','ActivityController');
+Route::get('/activities/friends/{userId}', 'ActivityController@getFriendsActivities');
+Route::post('/join-activitiy/{activityId}/user/{userId}', 'ActivityController@joinActivity');
+Route::get('/enrolled-activitiy/user/{userId}', 'ActivityController@getEnrolledActivities');
+Route::get('/created-activitiy/user/{userId}', 'ActivityController@getCreatedActivities');
