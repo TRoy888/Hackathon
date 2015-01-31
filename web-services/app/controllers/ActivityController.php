@@ -9,14 +9,16 @@ class ActivityController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('activities.index');
+		// $lon = Input::get('lon');
+		// $lat = Input::get('lat');
+		// $a = new Activity;
+		// return json_encode($a->findActityByLocation($lat, $lon));
+		return View::make('activities.index')->with('activities',Activity::all());
 		//34.022983, -118.295556
 		//34.022912, -118.295470
-		$lon = Input::get('lon');
-		$lat = Input::get('lat');
-		$a = new Activity;
+		
 		// return json_encode($a->findActityByLocation(34.022912, -118.295470));
-		return json_encode($a->findActityByLocation($lat, $lon));
+		
 	}
 
 
