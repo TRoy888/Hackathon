@@ -84,7 +84,7 @@ class SessionController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Auth::logout();
 	}
 
 

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38)
 # Database: hack
-# Generation Time: 2015-01-31 12:30:22 +0000
+# Generation Time: 2015-01-31 13:18:34 +0000
 # ************************************************************
 
 
@@ -35,16 +35,18 @@ CREATE TABLE `activities` (
   `user_id` int(11) unsigned DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
 
-INSERT INTO `activities` (`id`, `activity_name`, `location_long`, `location_lat`, `description`, `category_id`, `user_id`, `location`, `picture`)
+INSERT INTO `activities` (`id`, `activity_name`, `location_long`, `location_lat`, `description`, `category_id`, `user_id`, `location`, `picture`, `updated_at`, `created_at`)
 VALUES
-	(1,'Free Food For Android',-118.285,34.0229,'Free food for Trojans at Equad',1,1,NULL,NULL),
-	(2,'Stay alert contest',-118.23,34.12,'Whattttttttt',1,1,NULL,NULL);
+	(1,'Free Food For Android',-118.285,34.0229,'Free food for Trojans at Equad',1,1,NULL,NULL,NULL,NULL),
+	(2,'Stay alert contest',-118.23,34.12,'Whattttttttt',1,1,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -85,16 +87,18 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 
-INSERT INTO `categories` (`id`, `category`)
+INSERT INTO `categories` (`id`, `category`, `updated_at`, `created_at`)
 VALUES
-	(1,'Food'),
-	(2,'Education');
+	(1,'Food',NULL,NULL),
+	(2,'Education',NULL,NULL);
 
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -141,17 +145,19 @@ CREATE TABLE `users` (
   `rating` int(11) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `detail`, `rating`, `remember_token`, `picture`)
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `detail`, `rating`, `remember_token`, `picture`, `updated_at`, `created_at`)
 VALUES
-	(1,'trojan@usc.edu','Tommy','Trojan','password','testign',1,NULL,NULL),
-	(3,'pakdiyin@usc.edu','Golf','Golf_L','password','Hello World',1,NULL,NULL),
-	(4,'bumroong','Benz','Benz_L','password','Testsetesktklasjfklasjdlkfjklsdjf',1,NULL,NULL);
+	(1,'trojan@usc.edu','Tommy','Trojan','password','testign',1,NULL,NULL,NULL,NULL),
+	(3,'pakdiyin@usc.edu','Golf','Golf_L','password','Hello World',1,NULL,NULL,NULL,NULL),
+	(4,'bumroong','Benz','Benz_L','password','Testsetesktklasjfklasjdlkfjklsdjf',1,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
