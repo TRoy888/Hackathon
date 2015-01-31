@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38)
 # Database: hack
-# Generation Time: 2015-01-31 06:27:50 +0000
+# Generation Time: 2015-01-31 06:45:09 +0000
 # ************************************************************
 
 
@@ -32,15 +32,16 @@ CREATE TABLE `activities` (
   `location_lat` float DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `category_id` int(11) unsigned DEFAULT NULL,
+  `user_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
 
-INSERT INTO `activities` (`id`, `activity_name`, `location_long`, `location_lat`, `description`, `category_id`)
+INSERT INTO `activities` (`id`, `activity_name`, `location_long`, `location_lat`, `description`, `category_id`, `user_id`)
 VALUES
-	(1,'Free Food For Android',-118.285,34.0229,'Free food for Trojans at Equad',1);
+	(1,'Free Food For Android',-118.285,34.0229,'Free food for Trojans at Equad',1,NULL);
 
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -71,6 +72,16 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+
+INSERT INTO `categories` (`id`, `category`)
+VALUES
+	(1,'Food'),
+	(2,'Education');
+
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table user_user
@@ -100,10 +111,18 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `detail` varchar(1000) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
-  `user_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `detail`, `rating`)
+VALUES
+	(1,'trojan@usc.edu','Tommy','Trojan','password','testign',1);
+
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
