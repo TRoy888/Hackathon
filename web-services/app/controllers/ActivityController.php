@@ -1,5 +1,5 @@
 <?php
-
+include_once('/assets/scripts/DistantCalculator.php');
 class ActivityController extends \BaseController {
 
 	/**
@@ -9,7 +9,10 @@ class ActivityController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//34.022983, -118.295556
+
+		return distance(34.0229,-118.285,34.022983,-118.295556,"M");
+		//require 'filename';
 	}
 
 
