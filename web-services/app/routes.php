@@ -15,3 +15,11 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::resource('/user','UserController');
+
+Route::get('/login', 'SessionController@create');
+Route::get('/logout', 'SessionController@destroy');
+Route::resource('/session','SessionController');
+
+Route::resource('/activity','ActivityController');
