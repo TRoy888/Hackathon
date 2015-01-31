@@ -34,11 +34,11 @@ class ActivityController extends \BaseController {
 //   PRIMARY KEY (`id`)
 // ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 		$user = new User;
-		$user->email = Input::get["email"];
-		$user->firstName = Input::get["first_name"];
-		$user->lastName = Input::get["last_name"];
-		$user->password = Input::get["password"];
-		$user->detail = Input::get["detial"];
+		$user->email = Input::get("email");
+		$user->firstName = Input::get("first_name");
+		$user->lastName = Input::get("last_name");
+		$user->password = Input::get("password");
+		$user->detail = Input::get("detial");
 		$user->save();
 	}
 

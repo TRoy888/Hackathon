@@ -9,7 +9,8 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//return User::find(1)->users;
+		// return User::find(1)->joinedActivities;
 	}
 
 
