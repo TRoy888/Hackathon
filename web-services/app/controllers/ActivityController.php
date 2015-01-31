@@ -59,7 +59,7 @@ class ActivityController extends \BaseController {
 		$activity->category_id = $categoryId;
 		$activity->user_id = $userId;
 		$activity->location = $location;
-		$activity->picture = $destinationPath . ' ' . $imageName;
+		$activity->picture = $imageName;
 		$activity->save();
 	}
 
@@ -70,9 +70,11 @@ class ActivityController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($activityId)
 	{
-		//
+		$activity = Activity::find($activityId);
+		$owner = User::find($activity->user_id);
+		return View::make('Activities.detail', array('activity' => $activity, 'owner' => $owner));
 	}
 
 
@@ -118,8 +120,11 @@ class ActivityController extends \BaseController {
 		return json_encode($activities);
 	}
 
-	public function joinActivity($activityId, $userId)
+	public function joinActivity()
 	{
+//		$userId = Auth::user()->id;
+		$userId = 200;
+		$activityId = Input::get('activityId');
 		$activityUser = new ActivityUser;
 		$activityUser->activity_id = $activityId;
 		$activityUser->user_id = $userId;
