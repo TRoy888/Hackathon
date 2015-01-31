@@ -17,6 +17,7 @@ Route::get('/', function()
 });
 
 Route::resource('/user','UserController');
+Route::resource('/category','CategoryController');
 
 Route::get('/login', 'SessionController@create');
 Route::get('/logout', 'SessionController@destroy');

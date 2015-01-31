@@ -10,7 +10,7 @@ class Activity extends Eloquent{
     return DB::table('activities')->whereBetween('location_long', array($locationLong-$lonDif, $locationLat-$latDif))->get();
   }
   public function findAcivityByFriend($user){
-
+    
   }
   public function findUserActivity($user){
 
