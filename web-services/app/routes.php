@@ -24,6 +24,8 @@ Route::get('/logout', 'SessionController@destroy');
 Route::resource('/session','SessionController');
 
 Route::resource('/activity','ActivityController');
+Route::get('/get_activity/{lon}/{lat}', 'ActivityController@getActivitiesByLocation');
+
 Route::get('/activities/friends/{userId}', 'ActivityController@getFriendsActivities');
 Route::post('/join-activity', 'ActivityController@joinActivity');
 Route::get('/enrolled-activitiy/user/{userId}', 'ActivityController@getEnrolledActivities');
