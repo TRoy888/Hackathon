@@ -38,8 +38,8 @@ class ActivityController extends \BaseController {
 // ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 		$user = new User;
 		$user->email = Input::get("email");
-		$user->firstName = Input::get("first_name");
-		$user->lastName = Input::get("last_name");
+		$user->first_name = Input::get("first_name");
+		$user->last_name = Input::get("last_name");
 		$user->password = Input::get("password");
 		$user->detail = Input::get("detial");
 		$user->save();
@@ -53,18 +53,28 @@ class ActivityController extends \BaseController {
 	 */
 	public function store()
 	{
+		$userId = Input::get('userId');
 		$name = Input::get('name');
 		$locationLong = Input::get('locationLong');
 		$locationLat = Input::get('locationLat');
+		$location = Input::get('location');
 		$description = Input::get('description');
 		$categoryId = Input::get('categoryId');
+		$imageFile = Input::file('image');
+		
+		$destinationPath = '/upload/activity-image/';
+		$imageName = $imageFile->getClientOriginalName();
+		Input::file('image')->move($destinationPath, $imageName);
 
 		$activity = new Activity;
-		$activity->name = $name;
-		$activity->locationLong = $locationLong;
-		$activity->locationLat = $locationLat;
+		$activity->activity_name = $name;
+		$activity->location_long = $locationLong;
+		$activity->location_lat = $locationLat;
 		$activity->description = $description;
-		$activity->categoryId = $categoryId;
+		$activity->category_id = $categoryId;
+		$activity->user_id = $userId;
+		$activity->location = $location;
+		$activity->picture = $destinationPath . ' ' . $imageName;
 		$activity->save();
 	}
 
@@ -118,22 +128,31 @@ class ActivityController extends \BaseController {
 
 	public function getFriendsActivities($userId)
 	{
-
+		$activity = new Activity;
+		$activities = $activity->findAcivityByFriend($userId);
+		return json_encode($activities);
 	}
 
 	public function joinActivity($activityId, $userId)
 	{
-
+		$activityUser = new ActivityUser;
+		$activityUser->activity_id = $activityId;
+		$activityUser->user_id = $userId;
+		$activityUser->save();
 	}
 
 	public function getEnrolledActivities($userId)
 	{
-
+		$activity = new Activity;
+		$activities = $activity->findUserActivity($userId);
+		return json_encode($activities);
 	}
 
 	public function getCreatedActivities($userId)
 	{
-
+		$activity = new Activity;
+		$activities = $activity->createdActivities($userId);
+		return json_encode($activities);
 	}
 
 
