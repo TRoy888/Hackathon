@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.38)
 # Database: hack
-# Generation Time: 2015-01-31 04:55:17 +0000
+# Generation Time: 2015-01-31 06:27:50 +0000
 # ************************************************************
 
 
@@ -27,11 +27,34 @@ DROP TABLE IF EXISTS `activities`;
 
 CREATE TABLE `activities` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `activity_name` varchar(11) DEFAULT NULL,
+  `activity_name` varchar(255) DEFAULT NULL,
   `location_long` float DEFAULT NULL,
   `location_lat` float DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `category_id` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `activities` WRITE;
+/*!40000 ALTER TABLE `activities` DISABLE KEYS */;
+
+INSERT INTO `activities` (`id`, `activity_name`, `location_long`, `location_lat`, `description`, `category_id`)
+VALUES
+	(1,'Free Food For Android',-118.285,34.0229,'Free food for Trojans at Equad',1);
+
+/*!40000 ALTER TABLE `activities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table activity_user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `activity_user`;
+
+CREATE TABLE `activity_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned DEFAULT NULL,
+  `activity_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -77,6 +100,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `detail` varchar(1000) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
+  `user_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
