@@ -124,8 +124,7 @@ class ActivityController extends \BaseController {
 
 	public function joinActivity()
 	{
-//		$userId = Auth::user()->id;
-		$userId = 200;
+		$userId = Auth::user()->id;
 		$activityId = Input::get('activityId');
 		$activityUser = new ActivityUser;
 		$activityUser->activity_id = $activityId;
