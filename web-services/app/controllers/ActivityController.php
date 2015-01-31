@@ -10,9 +10,9 @@ class ActivityController extends \BaseController {
 	public function index()
 	{
 		//34.022983, -118.295556
-
-		return "";
-		//require 'filename';
+		//34.022912, -118.295470
+		$a = new Activity;
+		return json_encode($a->findActityByLocation(34.022912, -118.295470));
 	}
 
 
